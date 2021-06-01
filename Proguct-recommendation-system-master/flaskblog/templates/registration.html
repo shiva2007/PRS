@@ -1,0 +1,49 @@
+{%extends "layout1.html" %}
+{% block content%}
+    <div id="logreg-forms">
+            <form class="form-signup" action="" method="POST">
+
+                {{ form.hidden_tag() }}
+                
+               
+               
+                <h1 style="text-align: center;">Register</h1>
+                <input type="text" id="user-name" name = "username" class="form-control" placeholder="Full name" required="" autofocus="">
+                <p class="error-msg">
+                    {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                            {{error}}
+                        {%endfor%}
+                    {%endif%}
+                </p>
+                <input type="email" id="user-email" name = "email" class="form-control" placeholder="Email address" required autofocus="">
+                <p class="error-msg">
+                    {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                            {{error}}
+                        {%endfor%}
+                    {%endif%}
+                </p>
+                <input type="password" id="user-pass" name = "password" class="form-control" placeholder="Password" required autofocus="">
+                <p class="error-msg">
+                    {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                            {{error}}
+                        {%endfor%}
+                    {%endif%}
+                </p>
+                <input type="password" id="user-repeatpass" name = "confirm_password" class="form-control" placeholder="Repeat Password" required autofocus="">
+                
+                <p class="error-msg">
+                    {% if form.confirm_password.errors %}
+                    {% for error in form.confirm_password.errors %}
+                            {{error}}
+                        {%endfor%}
+                    {%endif%}
+                </p>
+                
+                <br/>
+                <input class="btn btn-primary btn-block" name = "submit" type="submit" value = "submit">
+        </form> 
+    </div>
+{% endblock content %}

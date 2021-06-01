@@ -1,0 +1,40 @@
+{% extends "layout1.html" %}
+{% block content %}
+<style>
+	.bg{
+	    position: relative; 
+	    height: 85vh;
+	    width: 100%;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	}
+	.bg::before{
+	      content: "";
+	      background-image: url('../static/3.jpg');
+	      background-size: cover;
+	      position: absolute;
+	      top: 0px;
+	      right: 0px;
+	      bottom: 0px;
+	      left: 0px;
+	      opacity: 0.25;
+	}
+</style>
+<div class="container-fluid bg">
+	<div class="container" style="color: rgb(0,0,0); padding: 0px;">
+		<div style="color: #03071e; font-family: helvetica;padding-left: 50px;padding-right: 50px; padding-top: 50px;"><div style="text-align: center; font-size: 35px;"><b>Product Recommendation System</b></div><br/>
+			This system serves as a guide for the consumers to choose best 
+			product at best price. Different websites have different prices for a 
+			product. Price of product may differ from website to website. In this 
+			case consumer has to search all the websites to select the price of 
+			the product which appeals to his/her taste. This is time consuming 
+			process. This product recommendation system helps consumers 
+			select the product which has different prices on different ecommerce websites based on prices, reviews and comments by 
+			displaying them on a single webpage and ranking them. It makes 
+			use of web-scraping technology. It also saves user preferences so 
+			that you never loose what you searched for. 
+		</div>
+	</div>
+</div>
+{% endblock content %}  

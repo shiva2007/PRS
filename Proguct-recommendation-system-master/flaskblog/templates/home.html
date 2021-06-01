@@ -1,0 +1,54 @@
+{% extends "layout1.html"%}
+{% block content %}
+
+<br/>
+<form method="POST" class="form-inline my-2 my-lg-0" style="padding-left: 430px;padding-right: 430px;">
+    <div class="placement"><hr></div>
+<div class = "search">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search.." name="search">    
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+</div> 
+</form>
+
+<br/>
+
+    {% if names %}
+    <div class="outlay">
+        <div class="lorem rounded zoom" style="border: 1px solid #00008B;">
+                <img src="{{recmd[3]}}">
+                <div class="item">
+                    <h5>{{recmd[0]}}</h5>
+                    <div>Price : {{recmd[1]}}</div>
+                    <div>Ratings : {{recmd[2]}}</div>
+                    <br />
+                    <a href="{{recmd[4]}}" class="btn btn-outline-success next" style="text-decoration:none; padding:3px;">Buy Now</a>
+                </div>
+        </div>    
+    </div>
+
+    <div style="text-align: center;">{{txt}}</div>
+    <div class="outlay" style="background-color: white; margin:-15px;">
+        {% for name,price,rating,image,url in zip(names,prices,ratings,images,urls) %}
+        
+            <div class="lorem rounded zoom" style="border: 1px solid #00008B;">
+                
+                    <img src="{{image}}">
+                    <div class="item">
+                        <h5>{{name}}</h5>
+                        <div>Price : {{price}}</div>
+                        <div>Ratings : {{rating}}</div>
+                        <br/>
+                        <a href="{{url}}" target="_blank" class="btn btn-outline-success next" style="text-decoration:none; padding:3px;">Buy Now</a>
+                    </div>
+            
+            </div>    
+    
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if result %}
+        <h4 style="text-align: center;">{{result}}</h4>
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" type = "text/css" href="../static/main1.css">
+        <!-- Bootstrap CSS -->  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+            {% if title %}
+            <title>{{title}}</title>
+            {%else%}
+            <title>blogpost</title>
+            {% endif%}
+        
+    </head>
+    <body class="main" style="font-family: helvetica;">
+        <div class="container" style="background-color: white; padding:0px; height: 100%;">
+        <nav class='header'>
+            <label class="logo" style="color: white;">PRS</label>
+            <ul>
+                <strong>
+                {%if title=="Home" %}
+                <li><a href="{{url_for('home')}}" class="active">Home</a></li>
+                
+                {% elif(title!="Login" and title!="Register") %}
+                <li><a href="{{url_for('home')}}" >Home</a></li>
+                {% endif %}
+                {%if title=="Login" %}
+                <li><a href="{{url_for('login')}}" class="active">Login</a></li>
+                {% elif title!="Home" and title!="About" %}
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                {% endif %}
+
+                {%if title=="Register" %}
+                <li><a href="{{url_for('registration')}}" class="active">Register</a></li>
+                {% elif title!="Home" and title!="About"%}
+                <li><a href="{{url_for('registration')}}">Register</a></li>
+                {% endif %}
+
+                {%if title=="About" %}
+                <li><a href="{{url_for('about')}}" class="active">About Us</a></li>
+                {% elif title!="Register" and title!="Login" %}
+                <li><a href="{{url_for('about')}}" >About Us</a></li>
+                {% endif %}
+
+                {% if title=="Home" or title=="About"%}
+                <li><a href="{{url_for('logout')}}" >Logout</a></li>
+                {% endif %}
+                </strong>
+            </ul>
+        </nav>  
+        {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+            
+            <div class="display">
+                <div class = "alert alert-{{category}}">
+                    {{message}}
+                </div>
+            </div>
+        {% endfor%}
+        {% endif %}
+        {%endwith%}
+        <div class ="container backimage">
+            {%block content%}
+            {% endblock %}
+        </div>
+    </div>
+    </body>
+    </html>
